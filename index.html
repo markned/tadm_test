@@ -4965,8 +4965,8 @@
 
             // phase: main -> (resultsMain -> review -> resultsReview) OR main -> repeat -> perfect
             const [phase, setPhase] = useState('main'); // 'main' | 'review' | 'repeat' | 'resultsMain' | 'resultsReview' | 'perfect'
-            const [tab, setTab] = useState('quiz'); // 'quiz' | 'study'
-            const [examMode, setExamMode] = useState(false); // false = Repeat Mode (default), true = Exam Mode
+            const [tab, setTab] = useState('quiz'); // 'quiz' | 'knowledge'
+            const [examMode, setExamMode] = useState(false); // false = Study Mode (default), true = Exam Mode
             const repeatWrongUntilCorrect = !examMode; // In exam mode, repeat is disabled
 
             const [activeIndex, setActiveIndex] = useState(0);
@@ -4978,11 +4978,12 @@
             const [repeatRemainingIds, setRepeatRemainingIds] = useState([]);
             const [repeatPassIds, setRepeatPassIds] = useState([]);
 
-            const [studyQuery, setStudyQuery] = useState('');
+            const [knowledgeQuery, setKnowledgeQuery] = useState('');
             const [isQuestionListOpen, setIsQuestionListOpen] = useState(true);
 
             const [hint, setHint] = useState({ qid: null, until: 0 }); // temporary hint for correct options
             const autoNextTimerRef = useRef(null);
+            const knowledgeQuestionRefs = useRef({}); // Refs for Knowledge Base questions for scrolling
 
             // confirmation modal
             const [confirmState, setConfirmState] = useState({ open: false, title: '', message: '' });
@@ -5205,7 +5206,7 @@
                 setReviewIds([]);
                 setRepeatRemainingIds([]);
                 setRepeatPassIds([]);
-                setStudyQuery('');
+                setKnowledgeQuery('');
                 setIsQuestionListOpen(true);
                 setHint({ qid: null, until: 0 });
                 setResultModal({ open: false, score: 0, correct: 0, total: 0, categoryStats: null, wrongAnswers: null });
@@ -5256,6 +5257,14 @@
                 // keep index in bounds
                 if (activeQuestions.length && activeIndex >= activeQuestions.length) setActiveIndex(0);
             }, [activeQuestions.length, activeIndex]);
+
+            // Scroll to current question in Knowledge Base when it changes
+            useEffect(() => {
+                if (tab === 'knowledge' && currentId && knowledgeQuestionRefs.current[currentId]) {
+                    const element = knowledgeQuestionRefs.current[currentId];
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, [currentId, tab]);
 
             useEffect(() => {
                 // cleanup pending auto-next timer on unmount
@@ -5357,7 +5366,7 @@
 
             const requestSetExamMode = (newExamMode) => {
                 if (newExamMode === examMode) return;
-                const modeName = newExamMode ? 'Exam Mode' : 'Repeat Mode';
+                const modeName = newExamMode ? 'Exam Mode' : 'Study Mode';
                 askConfirm({
                     title: `Switch to ${modeName}?`,
                     message: `Switching to ${modeName} will restart the quiz and clear your progress. Continue?`,
@@ -5429,7 +5438,7 @@
                     return;
                 }
 
-                // In repeat mode, check and lock as usual
+                // In study mode, check and lock as usual
                 const correctNow = isCorrectForQuestion(currentQuestion, answersById);
                 setStatusById(prev => ({ ...prev, [currentId]: correctNow ? 'correct' : 'wrong' }));
                 setLockedIds(prev => new Set(prev).add(currentId));
@@ -5746,14 +5755,14 @@
                 );
             };
 
-            const filteredStudyQuestions = useMemo(() => {
-                const q = (studyQuery || '').trim().toLowerCase();
+            const filteredKnowledgeQuestions = useMemo(() => {
+                const q = (knowledgeQuery || '').trim().toLowerCase();
                 if (!q) return questions;
                 return questions.filter(qq => {
                     const hay = [qq.id, qq.question, ...(qq.options || [])].filter(Boolean).join(' ').toLowerCase();
                     return hay.includes(q);
                 });
-            }, [studyQuery, questions]);
+            }, [knowledgeQuery, questions]);
 
             const canSubmit = !isLocked && ((answersById[currentId] || []).length === requiredSelections);
             const canNext = !isLast; // Allow navigation to next question at any time
@@ -5967,7 +5976,7 @@
                             <div className="flex items-center gap-3 flex-wrap">
                                 <button onClick={requestRestart} className="text-slate-400 hover:text-red-500 transition-colors" title="Restart Quiz"><RefreshCw /></button>
                                 {!examMode && (
-                                    <button onClick={() => setTab(t => t === 'quiz' ? 'study' : 'quiz')} className={`p-2 rounded-lg transition-colors ${tab === 'study' ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`} title="Study Mode"><BookOpen /></button>
+                                    <button onClick={() => setTab(t => t === 'quiz' ? 'knowledge' : 'quiz')} className={`p-2 rounded-lg transition-colors ${tab === 'knowledge' ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`} title="Knowledge Base"><BookOpen /></button>
                                 )}
                                 <button onClick={() => setIsQuestionListOpen(v => !v)} className="p-2 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors" title="Question list">
                                     List
@@ -5981,8 +5990,8 @@
                             <div className="flex items-center gap-3 flex-wrap justify-between sm:justify-end">
                                 <div className={`flex items-center gap-2 text-xs font-bold ${phase === 'main' ? 'text-slate-700' : 'text-slate-300'}`}>
                                     {phase === 'main' ? (
-                                        <label className="flex items-center gap-2 cursor-pointer" title={examMode ? 'Switch to Repeat Mode' : 'Switch to Exam Mode'}>
-                                            <span className="text-xs font-bold">Repeat Mode</span>
+                                        <label className="flex items-center gap-2 cursor-pointer" title={examMode ? 'Switch to Study Mode' : 'Switch to Exam Mode'}>
+                                            <span className="text-xs font-bold">Study Mode</span>
                                             <button
                                                 type="button"
                                                 disabled={phase !== 'main'}
@@ -5991,7 +6000,7 @@
                                                         // Switching to Exam Mode
                                                         requestSetExamMode(true);
                                                     } else {
-                                                        // Switching to Repeat Mode
+                                                        // Switching to Study Mode
                                                         requestSetExamMode(false);
                                                     }
                                                 }}
@@ -6004,7 +6013,7 @@
                                         </label>
                                     ) : (
                                         <span className="text-xs">
-                                            {examMode ? 'Exam Mode' : 'Repeat Mode'}
+                                            {examMode ? 'Exam Mode' : 'Study Mode'}
                                         </span>
                                     )}
                                 </div>
@@ -6120,7 +6129,7 @@
                                             </button>
 
                                             {isLast ? (
-                                                // In repeat mode, Finish is hidden (auto-advances to next cycle or perfect)
+                                                // In study mode, Finish is hidden (auto-advances to next cycle or perfect)
                                                 phase !== 'repeat' && (
                                                     <button
                                                         onClick={onFinish}
@@ -6148,15 +6157,15 @@
                                         <div className="sticky top-0 z-10 bg-white p-8 pb-4 border-b border-slate-100">
                                             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                                                 <div>
-                                                    <h1 className="text-2xl font-bold text-slate-800">Study Mode - Selected Questions</h1>
+                                                    <h1 className="text-2xl font-bold text-slate-800">Knowledge Base - Selected Questions</h1>
                                                     <div className="text-xs font-semibold text-slate-400 mt-1">
-                                                        Showing {filteredStudyQuestions.length} / {questions.length}
+                                                        Showing {filteredKnowledgeQuestions.length} / {questions.length}
                                                     </div>
                                                 </div>
                                                 <div className="w-full md:w-96">
                                                     <input
-                                                        value={studyQuery}
-                                                        onChange={(e) => setStudyQuery(e.target.value)}
+                                                        value={knowledgeQuery}
+                                                        onChange={(e) => setKnowledgeQuery(e.target.value)}
                                                         placeholder="Search (id / question / option)…"
                                                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
                                                     />
@@ -6165,8 +6174,22 @@
                                         </div>
 
                                         <div className="p-8 pt-6 space-y-6">
-                                            {filteredStudyQuestions.map((q, idx) => (
-                                                <div key={idx} className="p-6 border border-slate-100 rounded-2xl bg-slate-50/30">
+                                            {filteredKnowledgeQuestions.map((q, idx) => {
+                                                // Find question index in activeIds for navigation
+                                                const questionIndexInActive = activeIds.findIndex(id => id === q.id);
+                                                const canNavigate = questionIndexInActive >= 0;
+                                                const isCurrentQuestion = q.id === currentId;
+                                                
+                                                return (
+                                                <div 
+                                                    key={q.id || idx} 
+                                                    ref={el => { if (el && q.id) knowledgeQuestionRefs.current[q.id] = el; }}
+                                                    className={`p-6 border rounded-2xl transition-colors ${isCurrentQuestion ? 'border-blue-400 bg-blue-50 shadow-md' : 'border-slate-100 bg-slate-50/30'} ${canNavigate ? 'cursor-pointer hover:bg-slate-100' : ''}`} 
+                                                    onClick={canNavigate ? () => {
+                                                        setTab('quiz');
+                                                        goToIndex(questionIndexInActive);
+                                                    } : undefined}
+                                                >
                                                     <div className="flex items-start justify-between gap-3 mb-3">
                                                         <h3 className="font-bold text-sm flex-1">{q.id ? `${q.id} — ` : ''}{q.question}</h3>
                                                         {q.category && (
@@ -6187,7 +6210,8 @@
                                                         <strong>Note:</strong> {q.explanation || "No additional explanation available."}
                                                     </div>
                                                 </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 )}
