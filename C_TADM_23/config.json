@@ -1,0 +1,29 @@
+{
+  "testId": "C_TADM_23",
+  "testName": "SAP S/4HANA System Administration (C_TADM_23)",
+  "quizSizes": [5, 20, 40, 80, 275],
+  "defaultQuizSize": 80,
+  "passThreshold": 65,
+  "hintMs": 50,
+  "autoNextDelayMs": 2000,
+  "timePerQuestionSec": 135,
+  "topicDistribution": {
+    "Database_Administration_SAP_HANA": 15,
+    "Installing_Updating_SAP_Systems": 15,
+    "SAP_System_Concepts": 8,
+    "System_Administration": 25,
+    "SAP_Fiori_Fundamentals": 15,
+    "HTTP_Communication": 8,
+    "Transport_Management": 15
+  },
+  "categoryDisplayNames": {
+    "Database_Administration_SAP_HANA": "Database Administration SAP HANA",
+    "Installing_Updating_SAP_Systems": "Installing and Updating SAP Systems",
+    "SAP_System_Concepts": "SAP System Concepts",
+    "System_Administration": "System Administration",
+    "SAP_Fiori_Fundamentals": "SAP Fiori Fundamentals",
+    "HTTP_Communication": "HTTP-based Communication",
+    "Transport_Management": "Transport Management"
+  }
+}
+
