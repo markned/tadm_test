@@ -1,0 +1,24 @@
+{
+  "testId": "E_S4CON_2505",
+  "testName": "SAP S/4HANA System Cloud Transition (E_S4CON_2505)",
+  "quizSizes": [5, 20, 40, 275],
+  "defaultQuizSize": 40,
+  "passThreshold": 65,
+  "hintMs": 50,
+  "autoNextDelayMs": 2000,
+  "timePerQuestionSec": 135,
+  "topicDistribution": {
+    "Activities_Before_Starting_Conversion": 25,
+    "Downtime_Optimization_Execution": 25,
+    "Manual_Interventions_During_Conversion": 15,
+    "Preparing_Software_Update_Manager": 25,
+    "Other": 10
+  },
+  "categoryDisplayNames": {
+    "Activities_Before_Starting_Conversion": "Activities before starting a system conversion",
+    "Downtime_Optimization_Execution": "Downtime optimization and execution",
+    "Manual_Interventions_During_Conversion": "Manual interventions during a system conversion",
+    "Preparing_Software_Update_Manager": "Preparing usage of Software Update Manager",
+    "Other": "Other"
+  }
+}

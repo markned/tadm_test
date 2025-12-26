@@ -1,0 +1,644 @@
+[
+  {
+    "id": "Q1",
+    "question": "You have selected 'Standard' as scenario strategy in the SUM tool. Which steps take place via the shadow instance? (Note: 2 correct answers)",
+    "options": [
+      "Modification adjustment (SPAU)",
+      "Modification adjustment (SPDD)",
+      "Activation of dictionary objects (ACT_UPG)",
+      "Conversion of application tables (PARCONV_UPG)"
+    ],
+    "correctAnswerIndex": [
+      1,
+      2
+    ],
+    "type": "multiple",
+    "explanation": "In 'Standard' strategy, SPDD and ACT_UPG are performed on the shadow instance during uptime to minimize downtime.",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q2",
+    "question": "You are performing an SAP S/4HANA conversion with DMO. You are using the downtime-optimized data conversion (DoC). Which steps can partially be moved to uptime processing? (Note: 2 correct answers)",
+    "options": [
+      "Software update",
+      "Main import",
+      "Migration",
+      "Conversion"
+    ],
+    "correctAnswerIndex": [
+      2,
+      3
+    ],
+    "type": "multiple",
+    "explanation": "Downtime-optimized Conversion (DoC) allows triggering the migration and conversion during uptime.",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q3",
+    "question": "You are performing an SAP S/4HANA conversion. Which phases are executed during SUM technical downtime? (Note: 2 correct answers)",
+    "options": [
+      "TABIM_UPG",
+      "PARDIST_SHD",
+      "PARMVNT_UPG",
+      "TABIM_SHADOW_*"
+    ],
+    "correctAnswerIndex": [
+      1,
+      2
+    ],
+    "type": "multiple",
+    "explanation": "PARDIST_SHD and PARMVNT_UPG are key phases executed during technical downtime.",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q4",
+    "question": "What is the main purpose of performing benchmark runs for an SAP S/4HANA conversion?",
+    "options": [
+      "To optimize the conversion",
+      "To optimize the main import",
+      "To optimize the migration",
+      "To optimize the activation"
+    ],
+    "correctAnswerIndex": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Benchmark runs find the optimal number of parallel R3load processes to optimize migration duration.",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q5",
+    "question": "What do you need to know about the SAP S/4HANA Conversion Guide? (Note: 2 correct answers)",
+    "options": [
+      "It contains a section about the simplification item (SI) checks.",
+      "It explains the database migration option (DMO) of SUM.",
+      "It is a database-specific document.",
+      "It explains where to find information about the custom code analysis."
+    ],
+    "correctAnswerIndex": [
+      0,
+      3
+    ],
+    "type": "multiple",
+    "explanation": "The Guide covers SI checks and provides pointers for custom code analysis.",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q6",
+    "question": "Which preparational steps must be performed for an SAP S/4HANA conversion? (Note: 2 correct answers)",
+    "options": [
+      "Uninstall industry extensions NOT supported by SAP S/4HANA.",
+      "Delete client 066 (Early-Watch client).",
+      "Uninstall Fiori apps NOT released for SAP_UI 7.50.",
+      "Install add-on SAP Gateway 7.50."
+    ],
+    "correctAnswerIndex": [
+      1,
+      2
+    ],
+    "type": "multiple",
+    "explanation": "Client 066 is obsolete. Incompatible Fiori/UI components must also be handled.",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q7",
+    "question": "What do you need to consider when performing the SI checks for an SAP S/4HANA conversion? (Note: 2 correct answers)",
+    "options": [
+      "You need to build up an SI check framework by applying SAP Notes.",
+      "The errors from the SI checks must be solved; otherwise, SUM will report an error.",
+      "You need an SAP system based on AS ABAP 7.50 or above for the SI check framework.",
+      "The SI checks are executed in the development system and the results are transported."
+    ],
+    "correctAnswerIndex": [
+      0,
+      1
+    ],
+    "type": "multiple",
+    "explanation": "SI checks must be error-free for SUM to proceed. The framework is enabled via SAP Notes.",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q8",
+    "question": "Which of the following are valid options to check the progress of an inplace SUM DMO run? (Note: 2 correct answers)",
+    "options": [
+      "Check the dump size of the database export on disk.",
+      "Check the log files written in the SUM directory, subdirectory abap, subdirectory log.",
+      "Check logs for jobs starting with RSUPG_SGEN in the SAP system.",
+      "Check the Charts Control Center in the SUM UI."
+    ],
+    "correctAnswerIndex": [
+      1,
+      3
+    ],
+    "type": "multiple",
+    "explanation": "SUM UI's Charts Control Center and log files are the standard ways to monitor progress.",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q9",
+    "question": "After which phase does SUM stop to enable a test cycle in 'migration repetition' option?",
+    "options": [
+      "EU_CLONE_MIG_DT_RUN",
+      "EU_CLONE_MIG_SOT_RUN",
+      "EU_IMPORT_ALL",
+      "EU_CLONE_MIG_DT_CREATE"
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "explanation": "SUM stops after EU_CLONE_MIG_DT_RUN to allow testing of results.",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q10",
+    "question": "Which steps can SUM perform during an SAP S/4HANA conversion? (Note: 2 correct answers)",
+    "options": [
+      "Custom code analysis",
+      "Software update",
+      "Unicode conversion",
+      "Database migration"
+    ],
+    "correctAnswerIndex": [
+      1,
+      3
+    ],
+    "type": "multiple",
+    "explanation": "SUM handles software update and database migration (DMO).",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q11",
+    "question": "Which task needs to be performed during the preparation phase?",
+    "options": [
+      "Perform the migration of data.",
+      "Run the database migration.",
+      "Check the compatibility of custom code.",
+      "Solve problems from SI checks."
+    ],
+    "correctAnswerIndex": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Checking custom code compatibility (ATC) is a preparation task.",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q12",
+    "question": "Which steps run before technical downtime? (Note: 3 correct answers)",
+    "options": [
+      "ACT_UPG",
+      "TABIM_UPG",
+      "RUN_SGEN_GENER8",
+      "EU_CLONE_MIG_DT_CREATE",
+      "DIC_UPG"
+    ],
+    "correctAnswerIndex": [
+      0,
+      1,
+      4
+    ],
+    "type": "multiple",
+    "explanation": "ACT_UPG, TABIM_UPG, and DIC_UPG are phases that typically run in uptime.",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q13",
+    "question": "Where can you find info about PARCONV_UPG phase status? (Note: 2 correct answers)",
+    "options": [
+      "Job Overview (SM37)",
+      "R3trans processes",
+      "R3load processes",
+      "SUM subdirectory abap/tmp"
+    ],
+    "correctAnswerIndex": [
+      0,
+      3
+    ],
+    "type": "multiple",
+    "explanation": "PARCONV_UPG uses batch jobs (SM37) and logs in the tmp directory.",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q14",
+    "question": "SPAU adjustment: programs are 'automatic adjustment' (green). What if you continue without action?",
+    "options": [
+      "Modifications are kept.",
+      "SUM refuses to continue.",
+      "Modified objects are set to SAP standard.",
+      "SUM asks for a transport."
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Green status means automatic adjustment is possible; modifications are maintained.",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q15",
+    "question": "Name of additional server for S/4HANA Cloud Private Edition transition?",
+    "options": [
+      "Migration Server",
+      "Migration Hub",
+      "Transition Server",
+      "Central Instance"
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q16",
+    "question": "How does SUM recognize modification adjustment transports?",
+    "options": [
+      "DIR_TRANS/transport",
+      "Project SAP_ADJUST",
+      "<sid>KO<number>",
+      "File umodauto.lst"
+    ],
+    "correctAnswerIndex": [
+      3
+    ],
+    "type": "single",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q17",
+    "question": "Latest point to reset DMO procedure without losing data?",
+    "options": [
+      "End of DB migration",
+      "Start of Execution roadmap step",
+      "End of business downtime",
+      "Start of business downtime"
+    ],
+    "correctAnswerIndex": [
+      3
+    ],
+    "type": "single",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q18",
+    "question": "Benefits of benchmarking option? (Note: 2 correct answers)",
+    "options": [
+      "Find optimal parallel R3load count.",
+      "Record modification adjustments.",
+      "Verify download directory.",
+      "Obtain migration duration files."
+    ],
+    "correctAnswerIndex": [
+      0,
+      3
+    ],
+    "type": "multiple",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q19",
+    "question": "Benefit of using UPGANA.XML from a previous run?",
+    "options": [
+      "Accuracy of progress information",
+      "Skip phases",
+      "Repeat phases",
+      "Auto-fill fields"
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q20",
+    "question": "Which activities require a stack XML? (Note: 3 correct answers)",
+    "options": [
+      "DMO without update",
+      "Conversion without DMO",
+      "Prerequisite check",
+      "Benchmark tool",
+      "Conversion including DMO"
+    ],
+    "correctAnswerIndex": [
+      1,
+      2,
+      4
+    ],
+    "type": "multiple",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q21",
+    "question": "Which files can be handled in the download directory? (Note: 2 correct answers)",
+    "options": [
+      "SAPUPPHAS.BRK",
+      "SAPup_add.par",
+      "MIGRATE_DT_DUR.XML",
+      "Stack XML"
+    ],
+    "correctAnswerIndex": [
+      2,
+      3
+    ],
+    "type": "multiple",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q22",
+    "question": "Strategy Standard: when will the shadow instance be stopped last?",
+    "options": [
+      "Cleanup",
+      "Before downtime starts",
+      "Early in downtime",
+      "End of downtime"
+    ],
+    "correctAnswerIndex": [
+      1
+    ],
+    "type": "single",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q23",
+    "question": "Credentials for SPDD in development system?",
+    "options": [
+      "DDIC in Dev Client",
+      "Named user in Dev Client",
+      "DDIC in 000 Shadow",
+      "Named user in 000 Shadow"
+    ],
+    "correctAnswerIndex": [
+      3
+    ],
+    "type": "single",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q24",
+    "question": "Steps during SPDD before SUM continues? (Note: 2 correct answers)",
+    "options": [
+      "Assign transport as modification adjustment.",
+      "Activate dictionary objects.",
+      "Release transport.",
+      "Create new versions of objects."
+    ],
+    "correctAnswerIndex": [
+      0,
+      3
+    ],
+    "type": "multiple",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q25",
+    "question": "Systems for ATC analysis? (Note: 2 correct answers)",
+    "options": [
+      "ECC EHP 8",
+      "Standalone AS ABAP 7.52+",
+      "Solman 7.2",
+      "S/4HANA 1809+"
+    ],
+    "correctAnswerIndex": [
+      1,
+      3
+    ],
+    "type": "multiple",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q26",
+    "question": "SUM activities allowing nZDM? (Note: 3 correct answers)",
+    "options": [
+      "DMO for SUM",
+      "Conversion without DMO",
+      "Conversion with DMO",
+      "Upgrade",
+      "Support packages"
+    ],
+    "correctAnswerIndex": [
+      1,
+      3,
+      4
+    ],
+    "type": "multiple",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q27",
+    "question": "Minimum SAP_BASIS release for conversion?",
+    "options": [
+      "731",
+      "700",
+      "740",
+      "750"
+    ],
+    "correctAnswerIndex": [
+      1
+    ],
+    "type": "single",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q28",
+    "question": "Review custom code check results? (Note: 2 correct answers)",
+    "options": [
+      "SYCM",
+      "ATC",
+      "SE80",
+      "SAT"
+    ],
+    "correctAnswerIndex": [
+      1,
+      2
+    ],
+    "type": "multiple",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q29",
+    "question": "Possible paths for MaxDB non-Unicode ECC? (Note: 3 correct answers)",
+    "options": [
+      "DMO with Unicode conversion",
+      "Unicode -> DMO",
+      "Unicode -> ECC 750 (DMO) -> S/4HANA",
+      "Unicode -> DB Migration -> S/4HANA"
+    ],
+    "correctAnswerIndex": [
+      1,
+      2,
+      3
+    ],
+    "type": "multiple",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q30",
+    "question": "Where does Host Agent find SUM directory path?",
+    "options": [
+      "host_profile",
+      "<sid>adm environment",
+      "URL",
+      "sumabap.conf"
+    ],
+    "correctAnswerIndex": [
+      3
+    ],
+    "type": "single",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q31",
+    "question": "What does 'Calculated level' indicate in BIND PATCH?",
+    "options": [
+      "Stack SPs",
+      "Upgrade media SPs",
+      "Download dir SPs newer than stack",
+      "SPs bound to conversion"
+    ],
+    "correctAnswerIndex": [
+      2
+    ],
+    "type": "single",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q32",
+    "question": "Activate business functions for production? (Note: 2 correct answers)",
+    "options": [
+      "Transport from Dev",
+      "SUM default activation",
+      "S/4H_ALWAYS_ON section",
+      "Manual in production"
+    ],
+    "correctAnswerIndex": [
+      0,
+      1
+    ],
+    "type": "multiple",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q33",
+    "question": "SUM coverage? (Note: 2 correct answers)",
+    "options": [
+      "On-premise",
+      "Private Cloud",
+      "Public Cloud",
+      "New Implementation"
+    ],
+    "correctAnswerIndex": [
+      0,
+      1
+    ],
+    "type": "multiple",
+    "category": "Preparing_Software_Update_Manager"
+  },
+  {
+    "id": "Q34",
+    "question": "DMO data transfer default?",
+    "options": [
+      "R3load & memory pipes",
+      "Work processes & network",
+      "R3load & file transfer",
+      "R3load & network socket"
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q35",
+    "question": "When does SDM take place?",
+    "options": [
+      "Execution",
+      "Technical downtime",
+      "Before downtime",
+      "After SUM ended"
+    ],
+    "correctAnswerIndex": [
+      3
+    ],
+    "type": "single",
+    "category": "Manual_Interventions_During_Conversion"
+  },
+  {
+    "id": "Q36",
+    "question": "Latest simplification database content?",
+    "options": [
+      "SAP Note",
+      "RFC analysis",
+      "Support Portal download",
+      "ATC config"
+    ],
+    "correctAnswerIndex": [
+      2
+    ],
+    "type": "single",
+    "category": "Activities_Before_Starting_Conversion"
+  },
+  {
+    "id": "Q37",
+    "question": "Change R3load process count in SUM UI? (Note: 2 correct answers)",
+    "options": [
+      "Migration Prep",
+      "Parameters",
+      "Phaselist",
+      "Process Control Center"
+    ],
+    "correctAnswerIndex": [
+      2,
+      3
+    ],
+    "type": "multiple",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q38",
+    "question": "Tool for cloud transition (Lift&Shift/Conversion)?",
+    "options": [
+      "Software Orchestrator",
+      "RISE with SAP workbench",
+      "Transformation Center",
+      "Migration cockpit"
+    ],
+    "correctAnswerIndex": [
+      1
+    ],
+    "type": "single",
+    "category": "Other"
+  },
+  {
+    "id": "Q39",
+    "question": "40 process buckets = 80 R3load processes?",
+    "options": [
+      "Yes, pairs of processes",
+      "Phase limit",
+      "Uptime mode",
+      "CPU cores limit"
+    ],
+    "correctAnswerIndex": [
+      0
+    ],
+    "type": "single",
+    "category": "Downtime_Optimization_Execution"
+  },
+  {
+    "id": "Q40",
+    "question": "MIGRATE_DT_DUR.XML optimizes which step?",
+    "options": [
+      "Downtime conversion",
+      "Downtime migration",
+      "Shadow target",
+      "SDM"
+    ],
+    "correctAnswerIndex": [
+      1
+    ],
+    "type": "single",
+    "category": "Downtime_Optimization_Execution"
+  }
+]

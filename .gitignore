@@ -1,0 +1,30 @@
+# Backup files
+index_backup.html
+
+# Server scripts (local development)
+start-server-simple.bat
+start-server.bat
+start-server.ps1
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+
