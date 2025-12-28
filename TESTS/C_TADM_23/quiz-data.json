@@ -68,7 +68,7 @@
   },
   {
     "id": "Q78",
-    "question": "You need to integrate an existing SAP HANA 2.0 SPS02 database system into the SAP HANA cockpit monitor infrastructure.",
+    "question": "You need to integrate an existing SAP HANA 2.0 SPS02 database system into the SAP HANA cockpit monitor infrastructure. Where do you configure monitoring?",
     "options": [
       "In the SYSTEMDB",
       "In the first tenant",
@@ -114,22 +114,6 @@
     ],
     "type": "multiple",
     "explanation": "After starting SAP HANA, the system ensures consistency by: reloading a savepoint with the restored consistent state of the database (restores the last committed state), and rolling back write transactions that were open when the database was stopped (undoes incomplete transactions). Committed transactions are not rolled back, and aborted transactions are rolled back, not rolled forward.",
-    "category": "Database_Administration_SAP_HANA"
-  },
-  {
-    "id": "Q249",
-    "question": "How does SAP HANA handle data encryption in its persistence layer?\n\nPlease choose the correct answer.",
-    "options": [
-      "By row level",
-      "By column level",
-      "By table level",
-      "By page level"
-    ],
-    "correctAnswerIndex": [
-      3
-    ],
-    "type": "single",
-    "explanation": "SAP HANA encrypts the data persistence layer at the page level. Data pages (the storage units on disk) are encrypted as complete pages, not at row, column, or table level. This provides efficient encryption while maintaining performance, as encryption/decryption operations work on entire pages rather than individual data elements.",
     "category": "Database_Administration_SAP_HANA"
   },
   {
@@ -202,7 +186,7 @@
   },
   {
     "id": "Q157",
-    "question": "During the installation of an SAP Solution Manager 7.2 ABAP system, you are asked for several user ID's for user management engine (UME) users stored in the ABAP system.",
+    "question": "During the installation of an SAP Solution Manager 7.2 ABAP system, you are asked for several user ID's for user management engine (UME) users stored in the ABAP system. Which user types are required?",
     "options": [
       "Communication User",
       "Administrator User",
@@ -323,25 +307,6 @@
     "category": "Database_Administration_SAP_HANA"
   },
   {
-    "id": "Q263",
-    "question": "What does SAP recommend you size before you install SAP HANA in a tailored data center integration (TDI) scenario?\n\n",
-    "options": [
-      "SAP Application Performance Standard (SAPS)",
-      "Main memory",
-      "Network throughput",
-      "Persistent storage",
-      "Input/output operations per second (IOPS)"
-    ],
-    "correctAnswerIndex": [
-      0,
-      1,
-      3
-    ],
-    "type": "multiple",
-    "explanation": "For SAP HANA TDI (Tailored Datacenter Integration), SAP recommends sizing: SAP Application Performance Standard (SAPS) to determine overall system performance requirements, Main memory (RAM) for in-memory database operations, and Persistent storage (disk) for data persistence and backups. Network throughput and IOPS are important but not the primary sizing factors for TDI.",
-    "category": "Database_Administration_SAP_HANA"
-  },
-  {
     "id": "Q222",
     "question": "Which file system locations do you need to specify when installing the SAP HANA multi -host database system using the default settings? ",
     "options": [
@@ -425,23 +390,6 @@
     ],
     "type": "multiple",
     "explanation": "SAP S/4HANA re-imagined several key areas: Database models were simplified and optimized for HANA, User experience was transformed with SAP Fiori, and System configuration was streamlined. Network communication and user management follow similar principles to ECC, though enhanced, they were not fundamentally re-imagined.",
-    "category": "Database_Administration_SAP_HANA"
-  },
-  {
-    "id": "Q27",
-    "question": "You configured an automatic log backup. When does the system perform a regular log backup?",
-    "options": [
-      "The log buffer is full",
-      "When a savepoint occurs",
-      "The log segment is full",
-      "After the configured time threshold has been exceeded"
-    ],
-    "correctAnswerIndex": [
-      2,
-      3
-    ],
-    "type": "multiple",
-    "explanation": "When automatic log backup is configured in SAP HANA, regular log backups are performed when: the log segment is full (space-based trigger - when a log segment reaches its capacity), or after the configured time threshold has been exceeded (time-based trigger - scheduled periodic backup). The log buffer being full triggers log writes to disk, not backups, and savepoints are separate operations that don't trigger log backups.",
     "category": "Database_Administration_SAP_HANA"
   },
   {
@@ -529,7 +477,7 @@
   },
   {
     "id": "Q139",
-    "question": "You need to set up an SAP HANA system where several companies share the same SAP HANA instance. You have to provide each company a dedicated share of the instance for its data, configuration, and user management.",
+    "question": "You need to set up an SAP HANA system where several companies share the same SAP HANA instance. You have to provide each company a dedicated share of the instance for its data, configuration, and user management. Which deployment option should you use?",
     "options": [
       "Multiple Components on One Database (MCOD)",
       "Technical Co-Deployment (TCD)",
@@ -594,22 +542,6 @@
     ],
     "type": "multiple",
     "explanation": "SAP HANA support diagnosis information can be collected in two ways: by executing the Python script fullSystemInfoDump.py from the operating system command line, which generates comprehensive system information files, or by accessing the Diagnosis Files tab in the SAP HANA studio Administration view, which provides a graphical interface to download diagnosis files. The Trace Configuration tab is for configuring traces, not collecting diagnosis files.",
-    "category": "Database_Administration_SAP_HANA"
-  },
-  {
-    "id": "Q49",
-    "question": "How do you trigger a savepoint in an SAP HANA database?",
-    "options": [
-      "Start a log backup.",
-      "Commit a transaction.",
-      "Perform a soft shutdown.",
-      "Execute a delta merge."
-    ],
-    "correctAnswerIndex": [
-      2
-    ],
-    "type": "single",
-    "explanation": "A savepoint in SAP HANA is triggered during a soft shutdown, which writes all committed data from memory to persistent storage. Log backups, transaction commits, and delta merges do not trigger savepoints - they are separate operations that may occur before or after savepoints.",
     "category": "Database_Administration_SAP_HANA"
   },
   {
@@ -715,7 +647,7 @@
   },
   {
     "id": "Q122",
-    "question": "With the start profile parameter service/hostname you can also determine the IP address / host name to which the Web service port should be connected, to limit accessibility in the network.",
+    "question": "With the start profile parameter service/hostname you can also determine the IP address / host name to which the Web service port should be connected, to limit accessibility in the network. Which value allows connections from any IP address?",
     "options": [
       "/0.0.0.0",
       "/255.255.255.0 1",
@@ -882,7 +814,7 @@
   },
   {
     "id": "Q113",
-    "question": "Consider an SAP system that is based on AS ABAP + AS Java (for example an SAP Exchange Infrastructure system).",
+    "question": "Consider an SAP system that is based on AS ABAP + AS Java (for example an SAP Exchange Infrastructure system). How does the ICM determine which part should handle a request?",
     "options": [
       "By forwarding this request both to the dispatcher of the AS ABAP part and to the dispatcher of the AS Java part of the instance. Only the \"correct\" dispatcher will execute this request.",
       "For systems based on AS ABAP + AS Java, the ICM can only distribute incoming request to the AS ABAP part. Requests to the AS Java part must be sent to the Java Dispatcher directly.",
@@ -1353,25 +1285,6 @@
     ],
     "type": "multiple",
     "explanation": "Software Update Manager (SUM) for AS ABAP systems can update the Software component SAP_BASIS (core ABAP functionality and support packages) and the SAP kernel (the core executable layer of the SAP system). SUM does not update the database system (that requires separate database tools) or implemented SAP Notes (notes are applied via SNOTE or SPAM, not SUM).",
-    "category": "Installing_Updating_SAP_Systems"
-  },
-  {
-    "id": "Q42",
-    "question": "Which actions can Software Provisioning Manager (SWPM) perform?",
-    "options": [
-      "Install the Central Service instance on s4xhost",
-      "Copy the database installation media from s4xhost to haxhost",
-      "Set database import parameters for the database running on haxhost",
-      "Install the database on haxhost",
-      "Copy the database backup media from s4xhost to haxhost"
-    ],
-    "correctAnswerIndex": [
-      0,
-      2,
-      3
-    ],
-    "type": "multiple",
-    "explanation": "Software Provisioning Manager (SWPM) can install SAP system components including the Central Service instance on the application server host (s4xhost). It can also install the database on the database host (haxhost) and configure database import parameters. However, SWPM does not copy installation or backup media between hosts - these files must be available locally or accessible via network shares.",
     "category": "Installing_Updating_SAP_Systems"
   },
   {
@@ -2068,25 +1981,6 @@
     "category": "SAP_Fiori_Fundamentals"
   },
   {
-    "id": "Q172",
-    "question": "Which personalization elements can be assigned to user roles in Fiori?",
-    "options": [
-      "SAP Fiori catalog",
-      "SAP Fiori group",
-      "SAP Fiori space",
-      "SAP Fiori page",
-      "SAP Fiori tile"
-    ],
-    "correctAnswerIndex": [
-      0,
-      1,
-      2
-    ],
-    "type": "multiple",
-    "explanation": "Personalization elements that can be assigned to user roles in Fiori include: SAP Fiori catalog (collections of apps), SAP Fiori group (organizational containers), and SAP Fiori space (top-level navigation containers). Pages and tiles are assigned within groups/spaces, not directly to roles.",
-    "category": "SAP_Fiori_Fundamentals"
-  },
-  {
     "id": "Q244",
     "question": "What can be created based on ABAP CDS views?\n\n",
     "options": [
@@ -2120,22 +2014,6 @@
     ],
     "type": "multiple",
     "explanation": "Classic applications refer to: ABAP transactions (traditional SAP GUI transactions like SE11, SM30), and Web Dynpro ABAP applications (web-based applications using ABAP Web Dynpro framework). ABAP reports are executed programs, not interactive applications, and Web Dynpro Java applications are Java-based, not classic ABAP applications.",
-    "category": "SAP_Fiori_Fundamentals"
-  },
-  {
-    "id": "Q178",
-    "question": "What is the correct method to determine the SAPUI5 patch level in an AS ABAP-based SAP system?",
-    "options": [
-      "Check the version of software component SAP_UI",
-      "Use the program WOG_MAINTAIN_UR_MIMES",
-      "Execute the ICF service /sap/public/bc/ui5_ui5",
-      "Use the program /UI5/UI5_UPLOAD_PATCH_TO_MIME"
-    ],
-    "correctAnswerIndex": [
-      0
-    ],
-    "type": "single",
-    "explanation": "To determine the SAPUI5 patch level in an AS ABAP system, check the version of software component SAP_UI using transaction SPAM or System Information. The other options are for different purposes: WOG_MAINTAIN_UR_MIMES is for MIME maintenance, /sap/public/bc/ui5_ui5 is a service path, and /UI5/UI5_UPLOAD_PATCH_TO_MIME is for uploading patches.",
     "category": "SAP_Fiori_Fundamentals"
   },
   {
@@ -2256,22 +2134,6 @@
     "category": "SAP_Fiori_Fundamentals"
   },
   {
-    "id": "Q260",
-    "question": "In an embedded deployment, which protocol is used by object pages to access the SAP S/4HANA system?\n\nPlease choose the correct answer.",
-    "options": [
-      "OData",
-      "DIAG",
-      "InA",
-      "RFC"
-    ],
-    "correctAnswerIndex": [
-      0
-    ],
-    "type": "single",
-    "explanation": "In an embedded deployment (Fiori apps deployed on the same system as S/4HANA), object pages use OData protocol to access the S/4HANA backend. OData provides RESTful access to business data. RFC is for synchronous ABAP calls, DIAG is for SAP GUI, and InA is for analytics, not used by object pages.",
-    "category": "SAP_Fiori_Fundamentals"
-  },
-  {
     "id": "Q3",
     "question": "In an SAP S/4HANA environment, which SAP Fiori applications need a direct connection to the BES system?",
     "options": [
@@ -2351,22 +2213,6 @@
     ],
     "type": "single",
     "explanation": "The CATALOG READ privilege grants read-only access to all system and monitoring views in SAP HANA without allowing DDL (Data Definition Language) commands. Analytic Privileges control data access, System Privileges grant broader system-level permissions, and SAP_ALL is not a standard HANA privilege.",
-    "category": "SAP_System_Concepts"
-  },
-  {
-    "id": "Q258",
-    "question": "What is the purpose of a domain in the context of the ABAP Dictionary?\n\nPlease choose the correct answer.",
-    "options": [
-      "For entering data in a table.",
-      "For including a foreign key dependency.",
-      "For defining the technical attributes of a field.",
-      "For defining the semantic attributes of a field."
-    ],
-    "correctAnswerIndex": [
-      2
-    ],
-    "type": "single",
-    "explanation": "In the ABAP Dictionary, a domain defines the technical properties of fields, such as data type, length, decimals, and (optionally) value ranges. Semantic meaning and field labels belong to the data element, while foreign key dependencies are defined at table/field level. Entering data is done in applications, not in a domain.",
     "category": "SAP_System_Concepts"
   },
   {
@@ -2492,7 +2338,7 @@
   },
   {
     "id": "Q118",
-    "question": "You want to perform a remote client copy of client 100 of your development system to client 200 of your quality assurance system, using transaction SCC9. You want to use 16 parallel processes.",
+    "question": "You want to perform a remote client copy of client 100 of your development system to client 200 of your quality assurance system, using transaction SCC9. You want to use 16 parallel processes. Which of the following statements are correct?",
     "options": [
       "An RFC destination (SM59) must exist in the quality assurance system, pointing to client 100 of the development system",
       "An RFC server group (RZ12) must exist in the development system",
@@ -2616,7 +2462,7 @@
   },
   {
     "id": "Q254",
-    "question": "You are responsible for a newly installed SAP S/4HANA 1511 system with several instances. 2 of them are additional Application Servers (AAS).",
+    "question": "You are responsible for a newly installed SAP S/4HANA 1511 system with several instances. 2 of them are additional Application Servers (AAS). How many system profile files are evaluated during system start?",
     "options": [
       "4",
       "5",
@@ -3017,7 +2863,7 @@
   },
   {
     "id": "Q142",
-    "question": "During the setup of operation modes, you find the following distribution of work processes (see attached screenshot).",
+    "question": "During the setup of operation modes, you find the following distribution of work processes (see attached screenshot). Which changes should you make?",
     "options": [
       "Change the entry for Spool processes from 2 to 3",
       "Changes the entry for Dialog Processes from 8 to 7",
@@ -3198,12 +3044,12 @@
     ],
     "correctAnswerIndex": [
       0,
+      1,
       2,
-      3,
-      4
+      3
     ],
     "type": "multiple",
-    "explanation": "Standard SAP job scheduling supports: daily at specific time (1500), one-time scheduling (tomorrow at 2355), working day calculations (second-last working day of month), and interval scheduling with exclusions (every 9 days, not on Sundays). Annual scheduling on specific dates (April 1) requires custom calendar logic, not standard scheduling.",
+    "explanation": "Standard SAP job scheduling supports: daily at specific time (1500), annual scheduling on specific dates (every year on April 1 at 0800 using monthly periodicity with 12-month interval), one-time scheduling (tomorrow at 2355), and working day calculations (second-last working day of month using factory calendar). Interval scheduling with exclusions like 'every 9 days, but not on Sundays' is not reliably implementable with standard resources as periodic jobs that cannot execute may not create follow-on jobs.",
     "category": "System_Administration"
   },
   {
@@ -3239,23 +3085,6 @@
     ],
     "type": "single",
     "explanation": "To execute a user-defined compilation of functions for automated initial setup in AS ABAP, you must first create a task list containing the required configuration steps. Task lists are the standard method for organizing and executing configuration activities in SAP. Reports, Implementation Guide projects, and background jobs are not the primary method for this purpose.",
-    "category": "System_Administration"
-  },
-  {
-    "id": "Q273",
-    "question": "Which of the following elements are required for implementing a database copy?\n\n",
-    "options": [
-      "Source and target databases can have different number and types of services.",
-      "A data backup (file-based backups or backups using a third-party backup tool) or storage snapshot of the source system is available.",
-      "The target database must have the same or higher version than the source database.",
-      "The host number of the source and the target system are identical."
-    ],
-    "correctAnswerIndex": [
-      1,
-      2
-    ],
-    "type": "multiple",
-    "explanation": "A database copy requires that a valid source backup (file-based or third-party integrated) or a storage snapshot exists, and the target database must be at the same or higher version to ensure restore compatibility. The host number does not need to match, and service layout differences are not a prerequisite condition in the way stated.",
     "category": "System_Administration"
   },
   {
@@ -3562,7 +3391,7 @@
   },
   {
     "id": "Q252",
-    "question": "In an AS ABAP-based SAP system, a user performs the second dialog step in a dialog transaction. The dialog work process used in the first dialog step is occupied by a different user.",
+    "question": "In an AS ABAP-based SAP system, a user performs the second dialog step in a dialog transaction. The dialog work process used in the first dialog step is occupied by a different user. What happens?",
     "options": [
       "The dialog work process that handled the first dialog step performs a rollout to handle the request.",
       "The request remains in the request queue until the dialog work process that handled the first dialog step is free again.",
@@ -4027,25 +3856,6 @@
     "category": "Transport_Management"
   },
   {
-    "id": "Q120",
-    "question": "You are defining the Quality Assurance (QA) approval procedure. Which standard approval steps are selectable?",
-    "options": [
-      "To be approved by request owner",
-      "To be approved by task owner",
-      "To be approved by department",
-      "To be approved by system administration",
-      "To be approved by developer"
-    ],
-    "correctAnswerIndex": [
-      0,
-      2,
-      3
-    ],
-    "type": "multiple",
-    "explanation": "In the TMS QA approval procedure, the standard selectable approval steps are: approval by request owner, approval by department, and approval by system administration. Task owner and developer are not standard approval steps in the QA procedure configuration.",
-    "category": "Transport_Management"
-  },
-  {
     "id": "Q22",
     "question": "You are changing a customer developed program. The program is assigned to a transport request. When is the object lock released?",
     "options": [
@@ -4095,7 +3905,7 @@
   },
   {
     "id": "Q179",
-    "question": "In your development system DEV you are changing program ZPROGRAM which has MNT as original system attribute. You record the changes in a workbench request task.",
+    "question": "In your development system DEV you are changing program ZPROGRAM which has MNT as original system attribute. You record the changes in a workbench request task. What status will the task have?",
     "options": [
       "Unclassified",
       "Repair",
